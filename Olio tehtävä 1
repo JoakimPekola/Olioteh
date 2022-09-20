@@ -1,0 +1,94 @@
+using System;
+
+namespace oliotehtävä1
+{
+    class kirjasto
+    {
+
+        private string kirjanimi;
+        private int sivumaara;
+        private string kirjailija;
+        public string palautus() { return ""; }
+        public string lainaus() { return ""; }
+        
+        public kirjasto()
+        {
+            kirjanimi = "";
+            sivumaara = 0;
+            kirjailija = "";
+        }
+        public kirjasto(string u_kirjanimi,int u_sivumaara,string u_kirjailija)
+        {
+            kirjanimi = u_kirjailija;
+            sivumaara = u_sivumaara;
+            kirjailija = u_kirjailija;
+        }
+        public string Kirjanimi
+        {
+            set{
+                kirjanimi = value;
+            }
+            get
+            {
+                return kirjanimi;
+            }
+        }
+        public string Kirjailija
+        {
+            set
+            {
+                kirjailija = value;
+            }
+            get
+            {
+                return kirjailija;
+            }
+        }
+        public int Sivumaara
+        {
+            set
+            {
+                sivumaara = value;
+            }
+            get
+            {
+                return sivumaara;
+            }
+        }
+    }
+    class Program
+    {
+        
+        static void Main(string[] args)
+        {
+            string u_kirjanimi;
+            string u_kirjailija;
+            int u_sivumaara;
+            Console.WriteLine("Joakim Pekola");
+            Console.WriteLine();
+            Console.WriteLine("Anna kirjan nimi ");
+            u_kirjanimi = Console.ReadLine();
+            Console.WriteLine("Anna kirjan kirjailija");
+            u_kirjailija = Console.ReadLine();
+            Console.WriteLine("Anna sivumäärä");
+            u_sivumaara = int.Parse(Console.ReadLine());
+            kirjasto kirja = new kirjasto();
+            Console.WriteLine("teit olion");
+            kirja.Kirjanimi = u_kirjanimi;
+            Console.WriteLine("käytti setteriä");
+            kirja.Kirjailija = u_kirjailija;
+            Console.WriteLine("käytit setteriä");
+            kirja.Sivumaara = u_sivumaara;
+            Console.WriteLine("käytit setteriä");
+            Console.WriteLine("{0} {1} {2}", kirja.Kirjanimi, kirja.Kirjailija, kirja.Sivumaara) ;
+            Console.WriteLine("käytit getteriä");
+            kirjasto kirja2 = new kirjasto(u_kirjanimi, u_sivumaara, u_kirjailija);
+            Console.WriteLine("{0} {1} {2}", kirja2.Kirjanimi, kirja2.Kirjailija, kirja2.Sivumaara);
+            Console.WriteLine("käytettiin getteriä");
+            kirjasto kirja3 = new kirjasto();
+            Console.WriteLine("teit olion");
+            Console.WriteLine("{0} {1} {2}",kirja3.Kirjanimi,kirja3.Sivumaara,kirja3.Kirjailija);
+            Console.WriteLine("käytit getteriä");
+        }
+    }
+}
