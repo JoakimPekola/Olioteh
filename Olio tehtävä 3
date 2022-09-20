@@ -1,0 +1,187 @@
+using System;
+
+namespace Olio2
+{
+
+    class Varasto
+    {
+        public string tuotenimi;
+        public Varasto()
+        {
+            tuotenimi = "";
+        }
+    }
+
+
+
+    class tuotetieto : Varasto
+    {
+        public tuotetieto(string tuotenimi) : base()
+        {
+        }
+        private int maara;
+        private int paino;
+        private string saatavuus;
+        public static int laskuri = 0;
+        public int Laskuri()
+        {
+            Console.WriteLine("käytit methodia");
+            Console.WriteLine("laskuri on {0}", laskuri);
+            return laskuri;
+        }
+        public string palautus()
+        {
+            Console.WriteLine("käytit methodia");
+            Console.WriteLine("Onko saatavilla (k tai e)");
+            string v = Console.ReadLine();
+            if (v == "k") { saatavuus = "saatabilla"; } else { saatavuus = "ei saatavilla"; }
+            return saatavuus;
+        }
+        public string nimimuu()
+        {
+            Console.WriteLine("käytit methodia");
+            Console.WriteLine("anna uusi nimi");
+            tuotenimi = Console.ReadLine();
+            return tuotenimi;
+        }
+        public int painomuu()
+        {
+            Console.WriteLine("käytit methodia");
+            Console.WriteLine("anna uusi paino");
+            paino = int.Parse(Console.ReadLine());
+            return paino;
+        }
+        public int maaramuu()
+        {
+            Console.WriteLine("käytit methodia");
+            Console.WriteLine("anna uusi maara");
+            maara = int.Parse(Console.ReadLine());
+            return maara;
+        }
+        public tuotetieto()
+        {
+            tuotenimi = "";
+            maara = 0;
+            paino = 0;
+            saatavuus = "";
+            laskuri++;
+            Console.WriteLine("käytit oletuskostraktoria");
+        }
+        public tuotetieto(string u_tuotenimi, int u_maara, int u_paino, string u_saatavuus)
+        {
+            tuotenimi = u_tuotenimi;
+            maara = u_maara;
+            paino = u_paino;
+            saatavuus = u_saatavuus;
+            laskuri++;
+            Console.WriteLine("käytit ylikuormitettua konstruktoria");
+        }
+        public string Tuotenimi
+        {
+            set
+            {
+                Console.WriteLine("käytit setteriä");
+                tuotenimi = value;
+            }
+            get
+            {
+                Console.WriteLine("käytit getteriä");
+                return tuotenimi;
+            }
+        }
+        public int Maara
+        {
+            set
+            {
+                Console.WriteLine("käytit setteriä");
+                maara = value;
+            }
+            get
+            {
+                Console.WriteLine("käytit getteriä");
+                return maara;
+            }
+        }
+        public int Paino
+        {
+            set
+            {
+                Console.WriteLine("käytit setteriä");
+                paino = value;
+            }
+            get
+            {
+                Console.WriteLine("käytit getteriä");
+                return paino;
+            }
+        }
+        public string Saatavuus
+        {
+            set
+            {
+                Console.WriteLine("käytit setteriä");
+                saatavuus = value;
+            }
+            get
+            {
+                Console.WriteLine("käytit getteriä");
+                return saatavuus;
+            }
+        }
+    }
+    
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("joakim pekola");
+            Console.WriteLine();
+
+            string u_tuotenimi;
+            int u_maara;
+            int u_paino;
+            string u_saatavuus;
+            string vas = "";
+
+            Console.WriteLine("anna tuote nimi");
+            u_tuotenimi = Console.ReadLine();
+            Console.WriteLine("anna määrä");
+            u_maara = int.Parse(Console.ReadLine());
+            Console.WriteLine("anna paino");
+            u_paino = int.Parse(Console.ReadLine());
+            Console.WriteLine("anna saatavuus (saatavilla = k | ei saatavilla = e)");
+            u_saatavuus = Console.ReadLine();
+            if (u_saatavuus == "k") { u_saatavuus = "saatavilla"; } else { u_saatavuus = "ei saatavilla"; };
+
+            tuotetieto A = new tuotetieto(u_tuotenimi, u_maara, u_paino, u_saatavuus);
+            Console.WriteLine("tuotteen nimi on {0}. tuotteen määrä on {1}. tuotteen paino on {2}. tuotteen saatavuus on {3}.", A.Tuotenimi, A.Maara, A.Paino, A.Saatavuus);
+
+            tuotetieto B = new tuotetieto();
+            Console.WriteLine("tuotteen nimi on {0}. tuotteen määrä on {1}. tuotteen paino on {2}. tuotteen saatavuus on {3}.", B.Tuotenimi, B.Maara, B.Paino, B.Saatavuus);
+
+            tuotetieto C = new tuotetieto();
+            C.Tuotenimi = u_tuotenimi;
+            C.Maara = u_maara;
+            C.Paino = u_paino;
+            C.Saatavuus = u_saatavuus;
+        Noi:
+            Console.WriteLine("tuotteen nimi on {0}. tuotteen määrä on {1}. tuotteen paino on {2}. tuotteen saatavuus on {3}.", C.Tuotenimi, C.Maara, C.Paino, C.Saatavuus);
+
+            Console.WriteLine("haluatko muuttaa tietoja? kylla vai ei ");
+            vas = Console.ReadLine();
+            if (vas == "kylla")
+            {
+                C.nimimuu();
+                C.maaramuu();
+                C.painomuu();
+                C.palautus();
+                goto Noi;
+            }
+            else
+            {
+                C.Laskuri();
+            }
+
+        }
+    }
+}
