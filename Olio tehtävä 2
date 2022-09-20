@@ -1,0 +1,110 @@
+using System;
+
+namespace Olio2
+{
+    
+    class Varasto
+    {
+        private string tuotenimi;
+        private int maara;
+        private int paino;
+        private string saatavuus;
+        public static int laskuri = 0;
+        public  int Laskuri()
+        {
+            Console.WriteLine(laskuri);
+            return 6;
+        }
+        public string palautus()
+        {
+            saatavuus = "saatavilla";
+            return saatavuus;
+        }
+        public string eihyllyssä()
+        {
+            saatavuus = "ei saatavissa";
+            return saatavuus;
+        }
+        public string nimimuu(string u_nimi)
+        {
+            tuotenimi = u_nimi;
+            return tuotenimi;
+        }
+        public int painomuu(int u_paino)
+        {
+            Console.WriteLine("käytit methodia");
+            paino = u_paino;
+            return paino;
+        }
+        public Varasto()
+        {
+            tuotenimi = "";
+            maara = 0;
+            paino = 0;
+            saatavuus = "ei saatavilla";
+            laskuri++;
+            Console.WriteLine("käytit oletuskostraktoria");
+        }
+        public Varasto(string u_tuotenimi,int u_maara,int u_paino,string u_saatavuus)
+        {
+            tuotenimi = u_tuotenimi;
+            maara = u_maara;
+            paino = u_paino;
+            saatavuus = u_saatavuus;
+            laskuri++;
+        }
+        public string Tuotenimi
+        {
+            set
+            {
+                tuotenimi = value;
+            }
+            get
+            {
+                return tuotenimi;
+            }
+        }
+        public int Maara
+        {
+            set
+            {
+                maara = value;
+            }
+            get
+            {
+                return maara;
+            }
+        }
+        public int Paino
+        {
+            set
+            {
+                paino = value;
+            }
+            get
+            {
+                return paino;
+            }
+        }
+        public string Saatavuus
+        {
+            set
+            {
+                saatavuus = value;
+            }
+            get
+            {
+                return saatavuus;
+            }
+        }
+    }
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Varasto koi = new Varasto();
+            koi.Laskuri;
+            
+        }
+    }
+}
