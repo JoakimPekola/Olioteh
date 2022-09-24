@@ -1,0 +1,218 @@
+using System;
+
+namespace Olio4
+{
+    class Opiskelija
+    {
+        private string nimi;
+        private int ika;
+        private int arvosana;
+        private static int laskuri;
+        public string muutanimi()
+        {
+            Console.WriteLine("käytit methodia");
+            Console.WriteLine("Anna nimi");
+            string u_nimi = Console.ReadLine();
+            nimi = u_nimi;
+            return nimi;
+        }
+        public int muutaarvosana()
+        {
+            Console.WriteLine("käytit methodia");
+            Console.WriteLine("Anna nimi");
+            int u_arvo = int.Parse(Console.ReadLine());
+            arvosana = u_arvo;
+            return arvosana;
+        }
+        public int vanhenee()
+        {
+            Console.WriteLine("käytit methodia");
+            boo:
+            ika++;
+            Console.WriteLine("ikäsi on: {0}",ika);
+            Console.WriteLine("halutko lisätä enemmän ikää (k tai e)");
+            string vas = Console.ReadLine();
+            if(vas == "k") { goto boo; }
+            return ika;
+        }
+        public void tulosta()
+        {
+            Console.WriteLine("käytit methodia");
+            Console.WriteLine("nimi: {0} ikä: {1} arvosana: {2}",nimi,ika,arvosana);
+        }
+        public Opiskelija()
+        {
+            nimi = "";
+            ika = 0;
+            arvosana = 0;
+            laskuri++;
+            Console.WriteLine("teit olion");
+        }
+        public Opiskelija(string u_nimi)
+        {
+            nimi = u_nimi;
+            ika = 0;
+            arvosana = 0;
+            laskuri++;
+            Console.WriteLine("teit olion");
+        }
+        public string Nimi
+        {
+            get
+            {
+                Console.WriteLine("käytit getteriä");
+                return nimi;
+            }
+        }
+        public int Laskuri
+        {
+            get
+            {
+                Console.WriteLine("käytit getteriä");
+                return laskuri;
+            }
+        }
+    }
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Joakim Pekola");
+            Console.WriteLine();
+
+            string nimi1;
+            string nimi2;
+            string nimi3;
+            string nimi4;
+            string vast;
+
+            Console.WriteLine("(1) Anna nimi");
+            nimi1 = Console.ReadLine();
+            Console.WriteLine("(2) Anna nimi");
+            nimi2 = Console.ReadLine();
+            Console.WriteLine("(3) Anna nimi");
+            nimi3 = Console.ReadLine();
+            Console.WriteLine("(4) Anna nimi");
+            nimi4 = Console.ReadLine();
+
+            Opiskelija o1 = new Opiskelija(nimi1);
+            Opiskelija o2 = new Opiskelija(nimi2);
+            Opiskelija o3 = new Opiskelija(nimi3);
+            Opiskelija o4 = new Opiskelija(nimi4);
+
+            o1.tulosta();
+            o2.tulosta();
+            o3.tulosta();
+            o4.tulosta();
+            hier:
+            Console.WriteLine("haluatko muuttaa oppilaitten tietoja (k tai e)");
+            vast = Console.ReadLine();
+            if (vast == "k")
+            {
+                Console.WriteLine("kenen tietoja haluat muuttaa 1: {0} 2: {1} 3: {2} 4: {3}",o1.Nimi,o2.Nimi,o3.Nimi,o4.Nimi);
+                int vas = int.Parse(Console.ReadLine());
+                switch (vas)
+                {
+                    case 1:
+                        Console.WriteLine("Haluatko 1: muuttaa nimeä 2: lisätä ikää(+1v) 3: muuttaa arvosanaa");
+                        vas = int.Parse(Console.ReadLine());
+
+                        if (vas == 1)
+                        {
+                            o1.muutanimi();
+                        }else if (vas == 2)
+                        {
+                            o1.vanhenee();
+                        }else if (vas == 3)
+                        {
+                            o1.muutaarvosana();
+                        }else
+                        {
+                            Console.WriteLine("jokin meni pieleen");
+                        }
+                        break;
+
+                    case 2:
+                        Console.WriteLine("Haluatko 1: muuttaa nimeä 2: lisätä ikää(+1v) 3: muuttaa arvosanaa");
+                        vas = int.Parse(Console.ReadLine());
+                        if (vas == 1)
+                        {
+                            o2.muutanimi();
+                        }
+                        else if (vas == 2)
+                        {
+                            o2.vanhenee();
+                        }
+                        else if (vas == 3)
+                        {
+                            o2.muutaarvosana();
+                        }
+                        else
+                        {
+                            Console.WriteLine("jokin meni pieleen");
+                        }
+                        break;
+
+                    case 3:
+
+                        Console.WriteLine("Haluatko 1: muuttaa nimeä 2: lisätä ikää(+1v) 3: muuttaa arvosanaa");
+                        vas = int.Parse(Console.ReadLine());
+
+                        if (vas == 1)
+                        {
+                            o3.muutanimi();
+                        }
+                        else if (vas == 2)
+                        {
+                            o3.vanhenee();
+                        }
+                        else if (vas == 3)
+                        {
+                            o3.muutaarvosana();
+                        }
+                        else
+                        {
+                            Console.WriteLine("jokin meni pieleen");
+                        }
+                        break;
+
+                    case 4:
+                        Console.WriteLine("Haluatko 1: muuttaa nimeä 2: lisätä ikää(+1v) 3: muuttaa arvosanaa");
+                        vas = int.Parse(Console.ReadLine());
+
+                        if (vas == 1)
+                        {
+                            o4.muutanimi();
+                        }
+                        else if (vas == 2)
+                        {
+                            o4.vanhenee();
+                        }
+                        else if (vas == 3)
+                        {
+                            o4.muutaarvosana();
+                        }
+                        else
+                        {
+                            Console.WriteLine("jokin meni pieleen");
+                        }
+                        break;
+
+                    default:
+                        Console.WriteLine("jokin meni pieleen");
+                        break;
+                }
+                o1.tulosta();
+                o2.tulosta();
+                o3.tulosta();
+                o4.tulosta();
+                goto hier;
+            }
+            o1.tulosta();
+            o2.tulosta();
+            o3.tulosta();
+            o4.tulosta();
+            Console.WriteLine("Laskuri on: {0}",o1.Laskuri);
+        }
+    }
+}
