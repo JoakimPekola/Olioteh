@@ -19,7 +19,7 @@ namespace Olio4
         public int muutaarvosana()
         {
             Console.WriteLine("käytit methodia");
-            Console.WriteLine("Anna nimi");
+            Console.WriteLine("Anna arvosana");
             int u_arvo = int.Parse(Console.ReadLine());
             arvosana = u_arvo;
             return arvosana;
@@ -29,7 +29,7 @@ namespace Olio4
             Console.WriteLine("käytit methodia");
             boo:
             ika++;
-            Console.WriteLine("ikäsi on: {0}",ika);
+            Console.WriteLine("ikä on: {0}",ika);
             Console.WriteLine("halutko lisätä enemmän ikää (k tai e)");
             string vas = Console.ReadLine();
             if(vas == "k") { goto boo; }
