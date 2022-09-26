@@ -7,7 +7,7 @@ namespace Olio4
         private string nimi;
         private int ika;
         private int arvosana;
-        private static int laskuri;
+        public static int laskuri;
         public void Laskuri()
         {
             Console.WriteLine("Laskuri on: {0}",laskuri);
