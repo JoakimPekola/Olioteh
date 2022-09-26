@@ -8,6 +8,10 @@ namespace Olio4
         private int ika;
         private int arvosana;
         private static int laskuri;
+        public void Laskuri()
+        {
+            Console.WriteLine("Laskuri on: {0}",laskuri);
+        }
         public string muutanimi()
         {
             Console.WriteLine("käytit methodia");
@@ -66,14 +70,6 @@ namespace Olio4
             {
                 Console.WriteLine("käytit getteriä");
                 return nimi;
-            }
-        }
-        public int Laskuri
-        {
-            get
-            {
-                Console.WriteLine("käytit getteriä");
-                return laskuri;
             }
         }
     }
@@ -219,7 +215,7 @@ namespace Olio4
             o2.tulosta();
             o3.tulosta();
             o4.tulosta();
-            Console.WriteLine("Laskuri on: {0}", o1.Laskuri);
+            o1.Laskuri();
         }
     }
 }
