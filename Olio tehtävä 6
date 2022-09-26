@@ -1,0 +1,160 @@
+using System.Windows.Markup;
+
+namespace Olio_6
+{
+    internal class Program
+    {
+        class kulkuneuvvo
+        {
+            private int nopeus;
+            private int matkustajat;
+            public static int laskuri;
+
+            public void muunopeus()
+            {
+                Console.WriteLine("käytit methodia");
+                Console.WriteLine("Haluatko muuttaa nopeutta? (k tai e)");
+                string vas = Console.ReadLine();
+                if(vas == "k" || vas == "K")
+                {
+                    Console.WriteLine("laita paljonko haluat vaihtaa nopeutta");
+                    int unopeus = int.Parse(Console.ReadLine());
+                    nopeus = nopeus + unopeus;
+                    Console.WriteLine("Nopeutesi on: {0}",nopeus);
+                }
+            }
+            public void muumatkustajat()
+            {
+                Console.WriteLine("käytit methodia");
+                Console.WriteLine("halutko muuttaa matkustajia? (k tai e)");
+                string vas = Console.ReadLine();
+                if(vas == "k" || vas == "K")
+                {
+                    Console.WriteLine("montako matkustajaa on?");
+                    int mat = int.Parse(Console.ReadLine());
+                    matkustajat = mat;
+                    Console.WriteLine("matkustajia on: ",matkustajat);
+                }
+            }
+            public kulkuneuvvo()
+            {
+                Console.WriteLine("käytit ylälukan oletuskonstraktoria");
+                Console.WriteLine("teit olion");
+                laskuri++;
+                nopeus = 0;
+                matkustajat = 0;
+            }
+            public kulkuneuvvo(int unopeus, int umatkustajat)
+            {
+                Console.WriteLine("käytit yläluokan ylikuormitettua konstraktoria");
+                Console.WriteLine("teit olion");
+                laskuri++;
+                nopeus = unopeus;
+                matkustajat = umatkustajat;
+            }
+            public int Nopeus { get { Console.WriteLine("käytit getteriä"); return nopeus; } set { Console.WriteLine("käytit setteriä"); nopeus = value; } }
+            public int Matkustajat { get { Console.WriteLine("käytit getteriä"); return matkustajat; } set { Console.WriteLine("käytit setteriä"); matkustajat = value; } }
+        }
+        class lentokone : kulkuneuvvo
+        {
+            private int lentopituus;
+            public lentokone() : base()
+            {
+                Console.WriteLine("käytit aliluokan olutuskonstraktoria");
+                lentopituus = 0;
+            }
+            public lentokone(int ulentomatka) : base()
+            {
+                Console.WriteLine("käytit aliluokan ylikuormitettua konstraktoria");
+                lentopituus= ulentomatka;
+            }
+            public void muuLentomatka()
+            {
+                Console.WriteLine("käytit methodia");
+                Console.WriteLine("halutko muuttaa lento pituutta? (k tai e)");
+                string Vas = Console.ReadLine();
+                if(Vas == "k" || Vas == "K")
+                {
+                    Console.WriteLine("mikä on lennon pituus?");
+                    lentopituus = int.Parse(Console.ReadLine());
+                    Console.WriteLine("lennon pituus on: {0}", lentopituus);
+                }
+            }
+            public int Lentopituus
+            {
+                get
+                {
+                    Console.WriteLine("käytit getteriä");
+                    return lentopituus;
+                }
+                set
+                {
+                    Console.WriteLine("käytit setteriä");
+                    lentopituus = value;
+                }
+            }
+        }
+        class laiva : kulkuneuvvo
+        {
+            int kesto;
+
+            public laiva() : base()
+            {
+                Console.WriteLine("käytit aliluokan oletuskonstruktoria");
+                kesto = 0;
+            }
+            public laiva(int ukesto) : base()
+            {
+                Console.WriteLine("käytit aliluoka ylikuomittetua konstruktoria");
+                kesto = ukesto;
+            }
+
+            public void ukesto()
+            {
+                Console.WriteLine("käytit methodia");
+                Console.WriteLine("halutko muuttaa matkan kestoa? (k tai e)");
+                string vas = Console.ReadLine();
+                if(vas == "k" || vas == "K")
+                {
+                    Console.WriteLine("mikä on matkan uusi kesto?");
+                    kesto = int.Parse(Console.ReadLine());
+                    Console.WriteLine("matkan pituus on: {0}", kesto);
+                }
+            }
+            public int Kesto
+            {
+                get
+                {
+                    Console.WriteLine("käytit getteriä");
+                    return kesto;
+                }
+                set
+                {
+                    Console.WriteLine("käytit setteriä");
+                    kesto=value;
+                }
+            }
+        }
+        static void Main(string[] args)
+        {
+            lentokone koi = new lentokone();
+            Console.WriteLine("nopeus: {0} matkustajat: {1} lennon pituus: {2}",koi.Nopeus,koi.Matkustajat,koi.Lentopituus);
+            Console.WriteLine();
+
+            lentokone lento1 = new lentokone();
+            lento1.muunopeus();
+            lento1.muumatkustajat();
+            lento1.muuLentomatka();
+            Console.WriteLine("nopeus: {0} matkustajat: {1} lennon pituus: {2}", lento1.Nopeus, lento1.Matkustajat, lento1.Lentopituus);
+            Console.WriteLine();
+
+            lentokone lento2 = new lentokone();
+            lento2.Nopeus = 12;
+            lento2.Matkustajat = 6;
+            lento2.Lentopituus = 10;
+            Console.WriteLine("nopeus: {0} matkustajat: {1} lennon pituus: {2}", lento2.Nopeus, lento2.Matkustajat, lento2.Lentopituus);
+            Console.WriteLine();
+            Console.WriteLine("laskuri on: {0}", kulkuneuvvo.laskuri);
+        }
+    }
+}
