@@ -63,7 +63,7 @@ namespace Olio_6
                 Console.WriteLine("käytit aliluokan olutuskonstraktoria");
                 lentopituus = 0;
             }
-            public lentokone(int ulentomatka) : base()
+            public lentokone(int ulentomatka,int unopeus,int umatkustaja) : base(unopeus,umatkustaja)
             {
                 Console.WriteLine("käytit aliluokan ylikuormitettua konstraktoria");
                 lentopituus= ulentomatka;
@@ -154,6 +154,10 @@ namespace Olio_6
             lento2.Lentopituus = 10;
             Console.WriteLine("nopeus: {0} matkustajat: {1} lennon pituus: {2}", lento2.Nopeus, lento2.Matkustajat, lento2.Lentopituus);
             Console.WriteLine();
+            
+
+            lentokone lento3 = new lentokone(15, 20, 25);
+            Console.WriteLine("nopeus: {0} matkustajat: {1} lennon pituus:{2}",lento3.Nopeus,lento3.Matkustajat,lento3.Lentopituus);
             Console.WriteLine("laskuri on: {0}", kulkuneuvvo.laskuri);
         }
     }
